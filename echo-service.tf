@@ -3,6 +3,8 @@ locals {
     app = "echo-demo"
   }
 
+  echo_service_base_path = "/echo"
+
   echo_server_port = 5678
 }
 
@@ -69,7 +71,7 @@ resource "kubernetes_ingress" "echo" {
     rule {
       http {
         path {
-          path = "/echo(/|$)(.*)"
+          path = "${local.echo_service_base_path}(/|$)(.*)"
 
           backend {
             service_name = kubernetes_service.echo.metadata[0].name
