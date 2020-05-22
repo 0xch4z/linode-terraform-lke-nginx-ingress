@@ -3,7 +3,7 @@ locals {
     app = "echo-demo"
   }
 
-  echo_server_port  = 5678
+  echo_server_port = 5678
 }
 
 resource "kubernetes_service" "echo" {
