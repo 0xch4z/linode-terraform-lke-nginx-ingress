@@ -16,3 +16,7 @@ data "kubernetes_service" "nginx-ingress-controller" {
 
   depends_on = [helm_release.nginx-ingress-release]
 }
+
+locals {
+  lb_ingress = data.kubernetes_service.nginx-ingress-controller.load_balancer_ingress[0]
+}
